@@ -6,6 +6,7 @@ import android.widget.Button
 import android.view.View
 import android.content.Intent
 import android.widget.ToggleButton
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         val play: ToggleButton = findViewById(R.id.playButton)
         play.setOnClickListener {
-            Metronome.startMet()
+            if (currentTempo != null) {
+                Metronome.startMet(currentTempo.toInt())
+            } else {
+                Metronome.startMet(120)
+            }
         }
     }
 

@@ -7,22 +7,28 @@ import android.util.Log
 
 object Metronome {
     private var metronome: Timer
+
     init {
         metronome = Timer("metronome", true)
     }
 
-    fun calculateSleepPeriod():Long {
-        return (1000 * (60 / 120)).toLong()
+    fun calculateSleepPeriod(bpm: Int):Long {
+         return 1000 * 60/bpm.toLong()
     }
 
-    fun startMet(): Boolean {
+    fun startMet(bpm: Int): Boolean {
         this.metronome.schedule(
             timerTask {
                 Log.i("met", "Tick")
             },
             0L,
-            calculateSleepPeriod()
+            calculateSleepPeriod(bpm)
         )
         return true
+    }
+
+    fun stopMet(): Boolean {
+
+        return false
     }
 }
