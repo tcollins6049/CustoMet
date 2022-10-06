@@ -28,7 +28,7 @@ object Metronome {
     }
 
     fun stopMet(): Boolean {
-
+        this.metronome.cancel()
         return false
     }
 }

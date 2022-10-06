@@ -19,16 +19,21 @@ class MainActivity : AppCompatActivity() {
             tempoButton.text = currentTempo
         }
 
+        var isMetOn = false
         val play: ToggleButton = findViewById(R.id.playButton)
         play.setOnClickListener {
-            if (currentTempo != null) {
+            if (currentTempo != null && isMetOn == false) {
                 Metronome.startMet(currentTempo.toInt())
-            } else {
+                isMetOn = true
+            } else if (currentTempo == null && isMetOn == false){
                 Metronome.startMet(120)
+                isMetOn = true
+            } else if (isMetOn == true) {
+                Metronome.stopMet()
+                isMetOn = false
             }
         }
     }
-
 
     fun goToTempoView(view: View) {
         val toTempoView = findViewById<Button>(R.id.toTempoView)
