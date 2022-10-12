@@ -31,4 +31,8 @@ object Metronome {
         this.metronome.cancel()
         return false
     }
+
+    fun createNewTimer() {
+        this.metronome = Timer("metronome", true)
+    }
 }

@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
                 isMetOn = true
             } else if (isMetOn == true) {
                 Metronome.stopMet()
+                Metronome.createNewTimer()
                 isMetOn = false
             }
         }
