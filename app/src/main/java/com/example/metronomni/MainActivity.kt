@@ -6,9 +6,11 @@ import android.widget.Button
 import android.view.View
 import android.content.Intent
 import android.widget.ToggleButton
+//import android.os.Handler
 import android.util.Log
 
 class MainActivity : AppCompatActivity() {
+    //private var repeatUpdateHandler: Handler = Handler()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
