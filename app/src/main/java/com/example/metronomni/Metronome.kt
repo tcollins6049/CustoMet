@@ -6,11 +6,15 @@ import android.media.ToneGenerator
 import android.media.AudioManager
 import android.os.Handler
 import android.os.Looper
+import android.media.SoundPool
+import java.util.concurrent.locks.LockSupport
 
 
+@Suppress("DEPRECATION")
 object Metronome {
     private var metronome: Timer
     private const val METRONOME_TONE = ToneGenerator.TONE_PROP_BEEP
+    private var soundPool: SoundPool? = null
 
     init {
         metronome = Timer("metronome", true)
@@ -43,8 +47,9 @@ object Metronome {
         return true*/
 
 
-        // To play sound
+        // To play sound using ToneGenerator
         //var tonegenerator: ToneGenerator
+
         this.metronome.schedule(
             timerTask {
                 val toneGenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
@@ -62,6 +67,7 @@ object Metronome {
             calculateSleepPeriod(bpm)
         )
         return true
+
 
     }
 
