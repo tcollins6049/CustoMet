@@ -131,12 +131,12 @@ class tempoActivity : AppCompatActivity() {
 
     }
 
-    fun toMainView(view: View) {
+    /*fun toMainView(view: View) {
         val setButton = findViewById<Button>(R.id.setButton)
         val tempoText = findViewById<TextView>(R.id.tempoText1)
         val currentTempo = tempoText.getText().toString()
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("TEMPO_TEXT", currentTempo)
         startActivity(intent)
-    }
+    }*/
 }

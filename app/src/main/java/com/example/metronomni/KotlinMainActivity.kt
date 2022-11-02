@@ -1,6 +1,6 @@
 package com.example.metronomni
 
-import androidx.appcompat.app.AppCompatActivity
+/*import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.view.View
@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
                 Metronome.createNewTimer()
                 isMetOn = false
             }
-            */
+             */
+
             if (currentTempo != null && isMetOn == false) {
                 soundpoolPlay(currentTempo.toInt())
                 metOnorOff = true
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 metOnorOff = false
                 isMetOn = false
             }
+
 
         }
     }
@@ -84,4 +86,4 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("TEMPO_TEXT", currentTempo)
         startActivity(intent)
     }
-}
+}*/

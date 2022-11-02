@@ -48,19 +48,19 @@ object Metronome {
 
 
         // To play sound using ToneGenerator
-        //var tonegenerator: ToneGenerator
+        var tonegenerator: ToneGenerator
 
         this.metronome.schedule(
             timerTask {
-                val toneGenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
-                toneGenerator.startTone(METRONOME_TONE)
-                toneGenerator.release()
-                //tonegenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
-                //tonegenerator.startTone(METRONOME_TONE)
-                //val handler = Handler(Looper.getMainLooper())
-                //handler.postDelayed(Runnable() {
-                //    tonegenerator.release()
-                //}, 100)
+                //val toneGenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+                //toneGenerator.startTone(METRONOME_TONE)
+                //toneGenerator.release()
+                tonegenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+                tonegenerator.startTone(METRONOME_TONE)
+                val handler = Handler(Looper.getMainLooper())
+                handler.postDelayed(Runnable() {
+                    tonegenerator.release()
+                }, 100)
 
             },
             0L,
