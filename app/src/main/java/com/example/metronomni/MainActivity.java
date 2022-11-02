@@ -13,6 +13,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.content.Intent;
 
 public class MainActivity extends Activity {
 
@@ -56,9 +57,30 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String currentTempo = "120";
+        Intent intent = getIntent();
+        currentTempo = intent.getStringExtra("currentTempo");
+        Button tempoButton = (Button) findViewById(R.id.tempoButton);
+        if (currentTempo == null) {
+            tempoButton.setText("120");
+        } else {
+            tempoButton.setText(currentTempo);
+        }
+
+        System.out.println("ghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghgh");
+        System.out.println(intent);
+        System.out.println(currentTempo);
+        if (currentTempo == null) {
+            System.out.println("TRUEEEEEEEEEEEEEEEEEEEEEEEE");
+        } else {
+            System.out.println("FALSEEEEEEEEEEEEEEEEEEEE");
+        }
+
         metroTask = new MetronomeAsyncTask();
 
         currentBeat = (TextView) findViewById(R.id.currentBeat);
+
 
         audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -81,6 +103,14 @@ public class MainActivity extends Activity {
             metroTask = new MetronomeAsyncTask();
             Runtime.getRuntime().gc();
         }
+    }
+
+    public void toTempoView(View view) {
+        Button tempoButton = (Button) findViewById(R.id.tempoButton);
+        String currTempo = tempoButton.getText().toString();
+        Intent intent = new Intent(MainActivity.this, setTempoActivity.class);
+        intent.putExtra("currentTempo", currTempo);
+        startActivity(intent);
     }
 
     private class MetronomeAsyncTask extends AsyncTask<Void,Void,String> {

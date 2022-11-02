@@ -48,16 +48,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/bps"
+        <Button
+            android:id="@+id/tempoButton"
             android:layout_width="0px"
             android:layout_height="90dp"
             android:layout_weight="1"
-            android:text="@string/bps"
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="toTempoView"
+            android:text="120"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/yellow"
-            android:textSize="30sp"
-            android:gravity="center_vertical|center_horizontal" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/timesignature"
@@ -86,7 +87,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/textView1"
@@ -112,6 +113,7 @@
             android:onClick="onPlusClick"
             android:text="@string/plus"
             android:textSize="30sp" />
+
 
     </LinearLayout>
 
@@ -146,6 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
+
     </LinearLayout>
 
     <LinearLayout
@@ -163,18 +166,29 @@
         <SeekBar
             android:id="@+id/volumebar"
             android:layout_width="0dip"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:padding="10dp" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/startstop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="onStartStopClick"
-        android:text="@string/start"
-        android:textSize="80dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content" >
+
+        <Button
+            android:id="@+id/startstop"
+            android:layout_width="wrap_content"
+            android:layout_height="236dp"
+            android:layout_weight="10"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:onClick="onStartStopClick"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:text="@string/start"
+            android:textSize="80dp" />
+    </LinearLayout>
 
 </LinearLayout>
