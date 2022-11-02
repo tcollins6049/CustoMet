@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
     private final short minBpm = 40;
     private final short maxBpm = 208;
 
-    private short bpm = 120;
+    private int bpm = 120;
     private short noteValue = 4;
     private short beats = 4;
     private short volume;
@@ -58,9 +58,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String currentTempo = "120";
         Intent intent = getIntent();
-        currentTempo = intent.getStringExtra("currentTempo");
+        String currentTempo = intent.getStringExtra("currentTempo");
         Button tempoButton = (Button) findViewById(R.id.tempoButton);
         if (currentTempo == null) {
             tempoButton.setText("120");
@@ -68,13 +67,8 @@ public class MainActivity extends Activity {
             tempoButton.setText(currentTempo);
         }
 
-        System.out.println("ghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghghgh");
-        System.out.println(intent);
-        System.out.println(currentTempo);
-        if (currentTempo == null) {
-            System.out.println("TRUEEEEEEEEEEEEEEEEEEEEEEEE");
-        } else {
-            System.out.println("FALSEEEEEEEEEEEEEEEEEEEE");
+        if (currentTempo != null) {
+            bpm = Integer.valueOf(currentTempo);
         }
 
         metroTask = new MetronomeAsyncTask();
