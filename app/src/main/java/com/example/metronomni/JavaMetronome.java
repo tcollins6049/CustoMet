@@ -8,7 +8,8 @@ public class JavaMetronome {
     private int beat;
     private int noteValue;
     private int silence;
-    private int silence2;
+    private double usableBpm = bpm;
+    private int usableBeat = beat;
 
     private double beatSound;
     private double sound;
@@ -21,9 +22,12 @@ public class JavaMetronome {
     private double[] soundTickArray;
     private double[] soundTockArray;
     private double[] silenceSoundArray;
-    private double[] silence2SoundArray;
     private Message msg;
     private double currentBeat = 1.0;
+
+    private boolean quarterSubs = false;
+    private boolean eighthSubs = false;
+    private boolean sixteenthSubs = true;
 
     public JavaMetronome(Handler handler) {
         audioGenerator.createPlayer();
@@ -31,7 +35,7 @@ public class JavaMetronome {
     }
 
     public void calcSilence() {
-        silence = (int) (((60/bpm)*8000) - tick); // / 2) - 500;
+        silence = (int) (((60/usableBpm)*8000) - tick);
         soundTickArray = new double[this.tick];
         soundTockArray = new double[this.tick];
         silenceSoundArray = new double[this.silence];
@@ -47,29 +51,77 @@ public class JavaMetronome {
             silenceSoundArray[i] = 0;
     }
 
-    public void calc2ndSilence() {
-        silence2 = (int) (((60 / (bpm)) * 8000) - tick);
-        silence2SoundArray = new double[this.silence2];
-        for(int i=0; i<silence2; i++) {
-            silence2SoundArray[i] = 0;
+    public void play() {
+        if (quarterSubs) {
+            usableBeat = beat;
+            usableBpm = bpm;
+            QuarterNotePlay();
+        } else if (eighthSubs) {
+            usableBeat = beat * 2;
+            usableBpm = bpm * 2;
+            EighthNotePlay();
+        } else if (sixteenthSubs) {
+            usableBeat = beat * 4;
+            usableBpm = bpm * 4;
+            sixteenthNotePlay();
         }
     }
 
-    public void play() {
+    public void QuarterNotePlay() {
         calcSilence();
-        calc2ndSilence();
         do {
             msg = new Message();
             msg.obj = ""+currentBeat;
-            if(currentBeat == 1) { //|| currentBeat == 2) {
+            if(currentBeat == 1) {
                 audioGenerator.writeSound(soundTickArray);
-                //audioGenerator.writeSound(silence2SoundArray);
-            } /*else if (currentBeat == 2) {
+            } else {
                 audioGenerator.writeSound(soundTockArray);
-            } else if (currentBeat == 3) {
+            }
+            if(bpm <= 120)
+                mHandler.sendMessage(msg);
+
+            audioGenerator.writeSound(silenceSoundArray);
+
+            if(bpm > 120)
+                mHandler.sendMessage(msg);
+            currentBeat++;
+            if(currentBeat > usableBeat)
+                currentBeat = 1;
+        } while(play);
+    }
+
+    public void EighthNotePlay() {
+        calcSilence();
+        do {
+            msg = new Message();
+            msg.obj = ""+currentBeat;
+            if(currentBeat % 2 == 1) {
                 audioGenerator.writeSound(soundTickArray);
-            } */else {
+            } else {
+                audioGenerator.writeSound(soundTockArray);
+            }
+            if(bpm <= 120)
+                mHandler.sendMessage(msg);
+
+            audioGenerator.writeSound(silenceSoundArray);
+
+            if(bpm > 120)
+                mHandler.sendMessage(msg);
+            currentBeat++;
+            if(currentBeat > usableBeat)
+                currentBeat = 1;
+        } while(play);
+    }
+
+    public void sixteenthNotePlay() {
+        calcSilence();
+        do {
+            msg = new Message();
+            msg.obj = ""+currentBeat;
+            if(currentBeat % 4 == 1) {
                 audioGenerator.writeSound(soundTickArray);
+            } else {
+                audioGenerator.writeSound(soundTockArray);
             }
             if(bpm <= 120)
                 mHandler.sendMessage(msg);
@@ -83,6 +135,8 @@ public class JavaMetronome {
                 currentBeat = 1;
         } while(play);
     }
+
+
 
 
     public void stop() {

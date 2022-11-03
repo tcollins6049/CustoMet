@@ -20,13 +20,13 @@ public class MainActivity extends Activity {
     private final short minBpm = 40;
     private final short maxBpm = 208;
 
-    private int bpm = 120;
+    private int bpm = 100;
     private short noteValue = 4;
     private short beats = 4;
     private short volume;
     private short initialVolume;
     private double beatSound = 2440;
-    private double sound = 0;
+    private double sound = 1440;
     private AudioManager audio;
     private MetronomeAsyncTask metroTask;
 
