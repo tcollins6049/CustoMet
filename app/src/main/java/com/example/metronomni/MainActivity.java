@@ -107,6 +107,15 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void toSubdivisionsView(View view) {
+        Button subdivButton = (Button) findViewById(R.id.subdivisionsButton);
+        Button tempoButton = (Button) findViewById(R.id.tempoButton);
+        String currTempo = tempoButton.getText().toString();
+        Intent intent = new Intent(MainActivity.this, setSubdivisionsActivity.class);
+        intent.putExtra("currentTempo", currTempo);
+        startActivity(intent);
+    }
+
     private class MetronomeAsyncTask extends AsyncTask<Void,Void,String> {
         JavaMetronome metronome;
 

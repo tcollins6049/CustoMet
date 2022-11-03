@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"> -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/setQuarterNoteButton"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Q"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/yellow"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/quarterNoteText"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Quarter Notes"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/yellow"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/setEighthNoteButton"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="8th"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/yellow"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/EightNoteText"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="8th Notes"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/yellow"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/setSixteenthNoteButton"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="16th"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/yellow"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/SixteenthNoteText"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="16th Notes"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/yellow"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+</LinearLayout>
+<!-- </androidx.constraintlayout.widget.ConstraintLayout> -->

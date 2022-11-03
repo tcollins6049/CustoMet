@@ -22,7 +22,10 @@
         <activity
             android:name=".setTempoActivity"
             android:exported="false">
-
+        </activity>
+        <activity
+            android:name=".setSubdivisionsActivity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".MainActivity"
