@@ -20,7 +20,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="Q"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="Quarter Notes"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
 
@@ -49,7 +49,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="8th"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="8th Notes"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
 
@@ -78,7 +78,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="16th"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
         <TextView
@@ -89,7 +89,36 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="16th Notes"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/setEighthNoteTripletButton"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="8th Trip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/EighthNoteTripletText"
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="8th Note Triplets"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
 

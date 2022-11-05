@@ -232,4 +232,36 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/FirstNote"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edited_quarter_note"
+            android:text="Button" />
+        <ImageButton
+            android:id="@+id/SecondNote"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edited_quarter_note"
+            android:text="Button" />
+        <ImageButton
+            android:id="@+id/ThirdNote"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edited_quarter_note"
+            android:text="Button" />
+        <ImageButton
+            android:id="@+id/FourthNote"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edited_quarter_note"
+            android:text="Button" />
+
+    </LinearLayout>
+
 </LinearLayout>

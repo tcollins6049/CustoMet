@@ -24,16 +24,25 @@ public class JavaMetronome {
     private Handler mHandler;
     private double[] soundTickArray;
     private double[] soundTockArray;
+    private double[] noSoundArray;
     private double[] silenceSoundArray;
     private Message msg;
     private double currentBeat = 1.0;
     ///////////////////////////////////////////////////
 
     // Sets subdivisions values in beginning of code //
-    private static boolean quarterSubs = false;
-    private static boolean eighthSubs = true;
-    private static boolean sixteenthSubs = false;
+    static boolean quarterSubs = false;
+    static boolean eighthSubs = true;
+    static boolean sixteenthSubs = false;
+    static boolean eighthNoteTripletSubs = false;
     ///////////////////////////////////////////////////
+
+    // Sets boolean values for if notes are accented, rests, or regular //
+    static boolean firstIsOn = true;
+    static boolean secondIsOn = true;
+    static boolean thirdIsOn = true;
+    static boolean fourthIsOn = true;
+    //////////////////////////////////////////////////////////////////////
 
     public JavaMetronome(Handler handler) {
         audioGenerator.createPlayer();
@@ -45,14 +54,17 @@ public class JavaMetronome {
         silence = (int) (((60/usableBpm)*8000) - tick);
         soundTickArray = new double[this.tick];
         soundTockArray = new double[this.tick];
+        noSoundArray = new double[this.tick];
         silenceSoundArray = new double[this.silence];
         msg = new Message();
         msg.obj = ""+currentBeat;
         double[] tick = audioGenerator.getSineWave(this.tick, 8000, beatSound);
         double[] tock = audioGenerator.getSineWave(this.tick, 8000, sound);
+        double[] none = audioGenerator.getSineWave(this.tick, 8000, 0);
         for(int i=0;i<this.tick;i++) {
             soundTickArray[i] = tick[i];
             soundTockArray[i] = tock[i];
+            noSoundArray[i] = none[i];
         }
         for(int i=0;i<silence;i++)
             silenceSoundArray[i] = 0;
@@ -75,6 +87,10 @@ public class JavaMetronome {
             usableBeat = beat * 4;
             usableBpm = bpm * 4;
             sixteenthNotePlay();
+        } else if (eighthNoteTripletSubs) {
+            usableBeat = beat * 3;
+            usableBpm = bpm * 3;
+            EighthNoteTripletPlay();
         }
     }
 
@@ -133,6 +149,50 @@ public class JavaMetronome {
             msg = new Message();
             msg.obj = ""+currentBeat;
             if(currentBeat % 4 == 1) {
+                if (firstIsOn) {
+                    audioGenerator.writeSound(soundTickArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 4 == 2){
+                if (secondIsOn) {
+                    audioGenerator.writeSound(soundTickArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 4 == 3){
+                if (thirdIsOn) {
+                    audioGenerator.writeSound(soundTickArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 4 == 0){
+                if (fourthIsOn) {
+                    audioGenerator.writeSound(soundTickArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            }
+
+            if(bpm <= 120)
+                mHandler.sendMessage(msg);
+
+            audioGenerator.writeSound(silenceSoundArray);
+
+            if(bpm > 120)
+                mHandler.sendMessage(msg);
+            currentBeat++;
+            if(currentBeat > usableBeat)
+                currentBeat = 1;
+        } while(play);
+    }
+
+    public void EighthNoteTripletPlay() {
+        calcSilence();
+        do {
+            msg = new Message();
+            msg.obj = ""+currentBeat;
+            if(currentBeat % 3 == 1) {
                 audioGenerator.writeSound(soundTickArray);
             } else {
                 audioGenerator.writeSound(soundTockArray);
@@ -145,7 +205,7 @@ public class JavaMetronome {
             if(bpm > 120)
                 mHandler.sendMessage(msg);
             currentBeat++;
-            if(currentBeat > beat)
+            if(currentBeat > usableBeat)
                 currentBeat = 1;
         } while(play);
     }
@@ -203,7 +263,30 @@ public class JavaMetronome {
 
     public static void set16thSubs(boolean sixteenthSubs2) { sixteenthSubs = sixteenthSubs2; }
 
+    public boolean get8thTripSubs() { return eighthNoteTripletSubs; }
+
+    public static void set8thTripSubs (boolean eighthNoteTrip2) { eighthNoteTripletSubs = eighthNoteTrip2; }
+
+    // Getter and setter methods for boolean values which determine if notes are active or not //
+
+    public static boolean getFirstIsOn() { return firstIsOn; }
+
+    public static void setFirstIsOn(boolean firstIsOn2) { firstIsOn = firstIsOn2; }
+
+    public static boolean getSecondIsOn() { return secondIsOn; }
+
+    public static void setSecondIsOn(boolean secondIsOn2) { secondIsOn = secondIsOn2; }
+
+    public static boolean getThirdIsOn() { return thirdIsOn; }
+
+    public static void setThirdIsOn(boolean thirdIsOn2) { thirdIsOn = thirdIsOn2; }
+
+    public static boolean getFourthIsOn() { return fourthIsOn; }
+
+    public static void setFourthIsOn(boolean fourthIsOn2) { fourthIsOn = fourthIsOn2; }
+
     /////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

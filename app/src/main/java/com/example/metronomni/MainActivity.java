@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.Intent;
+import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
 
@@ -70,6 +71,48 @@ public class MainActivity extends Activity {
         if (currentTempo != null) {
             bpm = Integer.valueOf(currentTempo);
         }
+        ImageButton firstNoteButton = (ImageButton) findViewById(R.id.FirstNote);
+        firstNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (JavaMetronome.getFirstIsOn()) {
+                    JavaMetronome.setFirstIsOn(false);
+                    firstNoteButton.setBackgroundResource(R.drawable.quarter_note_rest);
+                } else {
+                    JavaMetronome.setFirstIsOn(true);
+                    firstNoteButton.setBackgroundResource(R.drawable.quarter_note);
+                }
+            }
+        });
+        ImageButton secondNoteButton = (ImageButton) findViewById(R.id.SecondNote);
+        secondNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (JavaMetronome.getSecondIsOn()) {
+                    JavaMetronome.setSecondIsOn(false);
+                } else {
+                    JavaMetronome.setSecondIsOn(true);
+                }
+            }
+        });
+        ImageButton thirdNoteButton = (ImageButton) findViewById(R.id.ThirdNote);
+        thirdNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (JavaMetronome.getThirdIsOn()) {
+                    JavaMetronome.setThirdIsOn(false);
+                } else {
+                    JavaMetronome.setThirdIsOn(true);
+                }
+            }
+        });
+        ImageButton fourthNoteButton = (ImageButton) findViewById(R.id.FourthNote);
+        fourthNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (JavaMetronome.getFourthIsOn()) {
+                    JavaMetronome.setFourthIsOn(false);
+                } else {
+                    JavaMetronome.setFourthIsOn(true);
+                }
+            }
+        });
 
         metroTask = new MetronomeAsyncTask();
 
