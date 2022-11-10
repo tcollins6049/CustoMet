@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
     private double sound = 1440;
     private AudioManager audio;
     private MetronomeAsyncTask metroTask;
+    Boolean isMetOn = false;
 
     private Button plusButton;
     private Button minusButton;
@@ -57,7 +58,7 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mainmet);
 
         Intent intent = getIntent();
         String currentTempo = intent.getStringExtra("currentTempo");
@@ -71,20 +72,22 @@ public class MainActivity extends Activity {
         if (currentTempo != null) {
             bpm = Integer.valueOf(currentTempo);
         }
-        ImageButton firstNoteButton = (ImageButton) findViewById(R.id.FirstNote);
-        firstNoteButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton first16thNoteButton = (ImageButton) findViewById(R.id.First16thNote);
+        ImageButton second16thNoteButton = (ImageButton) findViewById(R.id.Second16thNote);
+        ImageButton fourth16thNoteButton = (ImageButton) findViewById(R.id.Fourth16thNote);
+        ImageButton third16thNoteButton = (ImageButton) findViewById(R.id.Third16thNote);
+        first16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (JavaMetronome.getFirstIsOn()) {
                     JavaMetronome.setFirstIsOn(false);
-                    firstNoteButton.setBackgroundResource(R.drawable.quarter_note_rest);
+                    first16thNoteButton.setBackgroundResource(R.drawable.quarter_note_rest);
                 } else {
                     JavaMetronome.setFirstIsOn(true);
-                    firstNoteButton.setBackgroundResource(R.drawable.quarter_note);
+                    first16thNoteButton.setBackgroundResource(R.drawable.quarter_note);
                 }
             }
         });
-        ImageButton secondNoteButton = (ImageButton) findViewById(R.id.SecondNote);
-        secondNoteButton.setOnClickListener(new View.OnClickListener() {
+        second16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (JavaMetronome.getSecondIsOn()) {
                     JavaMetronome.setSecondIsOn(false);
@@ -93,8 +96,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
-        ImageButton thirdNoteButton = (ImageButton) findViewById(R.id.ThirdNote);
-        thirdNoteButton.setOnClickListener(new View.OnClickListener() {
+        third16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (JavaMetronome.getThirdIsOn()) {
                     JavaMetronome.setThirdIsOn(false);
@@ -103,8 +105,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
-        ImageButton fourthNoteButton = (ImageButton) findViewById(R.id.FourthNote);
-        fourthNoteButton.setOnClickListener(new View.OnClickListener() {
+        fourth16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (JavaMetronome.getFourthIsOn()) {
                     JavaMetronome.setFourthIsOn(false);
@@ -126,16 +127,19 @@ public class MainActivity extends Activity {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public synchronized void onStartStopClick(View view) {
-        Button button = (Button) view;
-        String buttonText = button.getText().toString();
-        if(buttonText.equalsIgnoreCase("start")) {
-            button.setText(R.string.stop);
+        ImageButton button = (ImageButton) view;
+        //String buttonText = button.getText().toString();
+        //if(buttonText.equalsIgnoreCase("start")) {
+        if (!isMetOn) {
+            isMetOn = true;
+            //button.setText(R.string.stop);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
                 metroTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, (Void[])null);
             else
                 metroTask.execute();
         } else {
-            button.setText(R.string.start);
+            //button.setText(R.string.start);
+            isMetOn = false;
             metroTask.stop();
             metroTask = new MetronomeAsyncTask();
             Runtime.getRuntime().gc();

@@ -17,5 +17,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="teal_700">#FF018786</color>
     <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_reg">#00a0a0</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="dark_gray">#404040</color>
     <string name="one">1</string>
 </resources>
