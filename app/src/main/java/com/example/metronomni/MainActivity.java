@@ -36,6 +36,11 @@ public class MainActivity extends Activity {
     private Button minusButton;
     private TextView currentBeat;
 
+    static Boolean quarterSubStatus = true;
+    static Boolean eighthSubStatus = false;
+    static Boolean sixteenthSubStatus = false;
+    static Boolean eighthTripSubStatus = false;
+
     private Handler mHandler;
 
     // have in mind that: http://stackoverflow.com/questions/11407943/this-handler-class-should-be-static-or-leaks-might-occur-incominghandler
@@ -72,6 +77,9 @@ public class MainActivity extends Activity {
         if (currentTempo != null) {
             bpm = Integer.valueOf(currentTempo);
         }
+
+        setNoteImages();
+
         ImageButton first16thNoteButton = (ImageButton) findViewById(R.id.First16thNote);
         ImageButton second16thNoteButton = (ImageButton) findViewById(R.id.Second16thNote);
         ImageButton fourth16thNoteButton = (ImageButton) findViewById(R.id.Fourth16thNote);
@@ -190,5 +198,40 @@ public class MainActivity extends Activity {
 
 
     }
+
+    public void setNoteImages() {
+        ImageButton first16thNoteButton = (ImageButton) findViewById(R.id.First16thNote);
+        ImageButton second16thNoteButton = (ImageButton) findViewById(R.id.Second16thNote);
+        ImageButton fourth16thNoteButton = (ImageButton) findViewById(R.id.Fourth16thNote);
+        ImageButton third16thNoteButton = (ImageButton) findViewById(R.id.Third16thNote);
+        ImageButton onlyQuarterNoteButton = (ImageButton) findViewById(R.id.OnlyQuarterNote);
+        if (quarterSubStatus) {
+            first16thNoteButton.setVisibility(View.GONE);
+            second16thNoteButton.setVisibility(View.GONE);
+            third16thNoteButton.setVisibility(View.GONE);
+            fourth16thNoteButton.setVisibility(View.GONE);
+            onlyQuarterNoteButton.setVisibility(View.VISIBLE);
+        } else if (eighthSubStatus) {
+            first16thNoteButton.setVisibility(View.GONE);
+            second16thNoteButton.setVisibility(View.GONE);
+            third16thNoteButton.setVisibility(View.GONE);
+            fourth16thNoteButton.setVisibility(View.GONE);
+            onlyQuarterNoteButton.setVisibility(View.GONE);
+        } else if (sixteenthSubStatus) {
+            first16thNoteButton.setVisibility(View.VISIBLE);
+            second16thNoteButton.setVisibility(View.VISIBLE);
+            third16thNoteButton.setVisibility(View.VISIBLE);
+            fourth16thNoteButton.setVisibility(View.VISIBLE);
+            onlyQuarterNoteButton.setVisibility(View.GONE);
+        }
+
+    }
+
+    public static void setQuarterSubStatus(Boolean qss2) { quarterSubStatus = qss2; }
+    public static void setEighthSubStatus(Boolean ess2) { eighthSubStatus = ess2; }
+    public static void setSixteenthSubStatus(Boolean sss2) { sixteenthSubStatus = sss2; }
+    public static void setEighthTripSubStatus(Boolean etss2) { eighthTripSubStatus = etss2; }
+
+
 
 }

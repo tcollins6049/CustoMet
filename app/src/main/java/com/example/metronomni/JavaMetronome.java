@@ -31,8 +31,8 @@ public class JavaMetronome {
     ///////////////////////////////////////////////////
 
     // Sets subdivisions values in beginning of code //
-    static boolean quarterSubs = false;
-    static boolean eighthSubs = true;
+    static boolean quarterSubs = true;
+    static boolean eighthSubs = false;
     static boolean sixteenthSubs = false;
     static boolean eighthNoteTripletSubs = false;
     ///////////////////////////////////////////////////
