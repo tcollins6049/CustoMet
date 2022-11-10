@@ -7,6 +7,7 @@
     android:background="@color/black"
     tools:context=".MainActivity">
 
+    <!-- Contains buttons that access different views -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tabSelector"
         android:layout_width="match_parent"
@@ -29,12 +30,12 @@
             android:textAlignment="center"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintEnd_toStartOf="@+id/toCustomButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/toCustomButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -49,7 +50,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/toRudimentButton"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -61,7 +62,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintStart_toEndOf="@+id/toCustomButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -107,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerArea">
 
-         <ImageButton
+          <ImageButton
             android:id="@+id/First16thNote"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -159,6 +160,37 @@
             android:src="@drawable/testing4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/firstEighthNote"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="105dp"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/secondEighthNote"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/secondEighthNote"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="105dp"
+            android:layout_marginEnd="1dp"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/firstEighthNote"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

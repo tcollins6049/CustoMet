@@ -205,24 +205,32 @@ public class MainActivity extends Activity {
         ImageButton fourth16thNoteButton = (ImageButton) findViewById(R.id.Fourth16thNote);
         ImageButton third16thNoteButton = (ImageButton) findViewById(R.id.Third16thNote);
         ImageButton onlyQuarterNoteButton = (ImageButton) findViewById(R.id.OnlyQuarterNote);
+        ImageButton first8thNoteButton = (ImageButton) findViewById(R.id.firstEighthNote);
+        ImageButton second8thNoteButton = (ImageButton) findViewById(R.id.secondEighthNote);
         if (quarterSubStatus) {
             first16thNoteButton.setVisibility(View.GONE);
             second16thNoteButton.setVisibility(View.GONE);
             third16thNoteButton.setVisibility(View.GONE);
             fourth16thNoteButton.setVisibility(View.GONE);
             onlyQuarterNoteButton.setVisibility(View.VISIBLE);
+            first8thNoteButton.setVisibility(View.GONE);
+            second8thNoteButton.setVisibility(View.GONE);
         } else if (eighthSubStatus) {
             first16thNoteButton.setVisibility(View.GONE);
             second16thNoteButton.setVisibility(View.GONE);
             third16thNoteButton.setVisibility(View.GONE);
             fourth16thNoteButton.setVisibility(View.GONE);
             onlyQuarterNoteButton.setVisibility(View.GONE);
+            first8thNoteButton.setVisibility(View.VISIBLE);
+            second8thNoteButton.setVisibility(View.VISIBLE);
         } else if (sixteenthSubStatus) {
             first16thNoteButton.setVisibility(View.VISIBLE);
             second16thNoteButton.setVisibility(View.VISIBLE);
             third16thNoteButton.setVisibility(View.VISIBLE);
             fourth16thNoteButton.setVisibility(View.VISIBLE);
             onlyQuarterNoteButton.setVisibility(View.GONE);
+            first8thNoteButton.setVisibility(View.GONE);
+            second8thNoteButton.setVisibility(View.GONE);
         }
 
     }
