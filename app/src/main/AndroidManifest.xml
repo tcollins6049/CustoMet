@@ -28,6 +28,10 @@
             android:exported="false">
         </activity>
         <activity
+            android:name=".setCustomActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

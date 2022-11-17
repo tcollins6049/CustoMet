@@ -18,22 +18,22 @@ import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
 
-    private final short minBpm = 40;
-    private final short maxBpm = 208;
+    //private final short minBpm = 40;
+    //private final short maxBpm = 208;
 
     private int bpm = 100;
     private short noteValue = 4;
     private short beats = 4;
-    private short volume;
-    private short initialVolume;
+    //private short volume;
+    //private short initialVolume;
     private double beatSound = 2440;
     private double sound = 1440;
     private AudioManager audio;
     private MetronomeAsyncTask metroTask;
     Boolean isMetOn = false;
 
-    private Button plusButton;
-    private Button minusButton;
+    //private Button plusButton;
+    //private Button minusButton;
     private TextView currentBeat;
 
     static Boolean quarterSubStatus = true;
@@ -69,7 +69,8 @@ public class MainActivity extends Activity {
         String currentTempo = intent.getStringExtra("currentTempo");
         Button tempoButton = (Button) findViewById(R.id.tempoButton);
         if (currentTempo == null) {
-            tempoButton.setText("120");
+            currentTempo = "100";
+            tempoButton.setText(currentTempo);
         } else {
             tempoButton.setText(currentTempo);
         }
@@ -282,6 +283,19 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void toCustomView(View view) {
+        ImageButton startStopButton = (ImageButton) findViewById(R.id.startstop);
+        if (isMetOn) {
+            isMetOn = false;
+            startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+            metroTask.stop();
+            metroTask = new MetronomeAsyncTask();
+            Runtime.getRuntime().gc();
+        }
+        Intent intent = new Intent(MainActivity.this, setCustomActivity.class);
+        startActivity(intent);
+    }
+
     private class MetronomeAsyncTask extends AsyncTask<Void,Void,String> {
         JavaMetronome metronome;
 
@@ -349,10 +363,13 @@ public class MainActivity extends Activity {
     public static boolean getQuarterSubStatus() { return quarterSubStatus; }
     public static void setQuarterSubStatus(Boolean qss2) { quarterSubStatus = qss2; }
 
+    public static boolean getEighthSubStatus() { return eighthSubStatus; }
     public static void setEighthSubStatus(Boolean ess2) { eighthSubStatus = ess2; }
 
+    public static boolean getSixteenthSubStatus() { return sixteenthSubStatus; }
     public static void setSixteenthSubStatus(Boolean sss2) { sixteenthSubStatus = sss2; }
 
+    public static boolean getEighthTripSubStatus() { return eighthTripSubStatus; }
     public static void setEighthTripSubStatus(Boolean etss2) { eighthTripSubStatus = etss2; }
 
 

@@ -46,6 +46,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 0;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         oneButton.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 1;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         twoButton.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +72,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 2;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         threeButton.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +85,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 3;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         fourButton.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +98,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 4;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         fiveButton.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +111,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 5;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         sixButton.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +124,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 6;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         sevenButton.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +137,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 7;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         eightButton.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +150,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 8;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         nineButton.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +163,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 9;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                checkBpmBounds(tempo);
             }
         });
         clearButton.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +172,27 @@ public class setTempoActivity extends Activity {
                 tempoText.setText(Integer.toString(tempo));
             }
         });
+    }
+
+    public void checkBpmBounds(int tempo) {
+        TextView tempoText = (TextView) findViewById(R.id.tempoText1);
+        MainActivity mainactivity = new MainActivity();
+        if (mainactivity.getQuarterSubStatus()) {
+            if (tempo > 480) {
+                tempo = 480;
+                tempoText.setText(Integer.toString(tempo));
+            }
+        } else if (mainactivity.getEighthSubStatus()) {
+            if (tempo > 240) {
+                tempo = 240;
+                tempoText.setText(Integer.toString(tempo));
+            }
+        } else if (mainactivity.getSixteenthSubStatus()) {
+            if (tempo > 120) {
+                tempo = 120;
+                tempoText.setText(Integer.toString(tempo));
+            }
+        }
     }
 
     public void toMainView(View view) {
