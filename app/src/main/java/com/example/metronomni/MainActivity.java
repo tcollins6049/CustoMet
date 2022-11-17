@@ -80,48 +80,141 @@ public class MainActivity extends Activity {
 
         setNoteImages();
 
+        ImageButton startStopButton = (ImageButton) findViewById(R.id.startstop);
         ImageButton first16thNoteButton = (ImageButton) findViewById(R.id.First16thNote);
         ImageButton second16thNoteButton = (ImageButton) findViewById(R.id.Second16thNote);
         ImageButton fourth16thNoteButton = (ImageButton) findViewById(R.id.Fourth16thNote);
         ImageButton third16thNoteButton = (ImageButton) findViewById(R.id.Third16thNote);
+        ImageButton onlyQuarterNoteButton = (ImageButton) findViewById(R.id.OnlyQuarterNote);
+        ImageButton first8thNoteButton = (ImageButton) findViewById(R.id.firstEighthNote);
+        ImageButton second8thNoteButton = (ImageButton) findViewById(R.id.secondEighthNote);
         first16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (JavaMetronome.getFirstIsOn()) {
-                    JavaMetronome.setFirstIsOn(false);
-                    first16thNoteButton.setBackgroundResource(R.drawable.quarter_note_rest);
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getFirst16thIsOn()) {
+                    JavaMetronome.setFirst16thIsOn(false);
+                    first16thNoteButton.setImageResource(R.drawable.quarterrest1);
                 } else {
-                    JavaMetronome.setFirstIsOn(true);
-                    first16thNoteButton.setBackgroundResource(R.drawable.quarter_note);
+                    JavaMetronome.setFirst16thIsOn(true);
+                    first16thNoteButton.setImageResource(R.drawable.testing4);
                 }
             }
         });
         second16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (JavaMetronome.getSecondIsOn()) {
-                    JavaMetronome.setSecondIsOn(false);
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getSecond16thIsOn()) {
+                    JavaMetronome.setSecond16thIsOn(false);
+                    second16thNoteButton.setImageResource(R.drawable.quarterrest1);
                 } else {
-                    JavaMetronome.setSecondIsOn(true);
+                    JavaMetronome.setSecond16thIsOn(true);
+                    second16thNoteButton.setImageResource(R.drawable.testing4);
                 }
             }
         });
         third16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (JavaMetronome.getThirdIsOn()) {
-                    JavaMetronome.setThirdIsOn(false);
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getThird16thIsOn()) {
+                    JavaMetronome.setThird16thIsOn(false);
+                    third16thNoteButton.setImageResource(R.drawable.quarterrest1);
                 } else {
-                    JavaMetronome.setThirdIsOn(true);
+                    JavaMetronome.setThird16thIsOn(true);
+                    third16thNoteButton.setImageResource(R.drawable.testing4);
                 }
             }
         });
         fourth16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (JavaMetronome.getFourthIsOn()) {
-                    JavaMetronome.setFourthIsOn(false);
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getFourth16thIsOn()) {
+                    JavaMetronome.setFourth16thIsOn(false);
+                    fourth16thNoteButton.setImageResource(R.drawable.quarterrest1);
                 } else {
-                    JavaMetronome.setFourthIsOn(true);
+                    JavaMetronome.setFourth16thIsOn(true);
+                    fourth16thNoteButton.setImageResource(R.drawable.testing4);
                 }
             }
         });
+        onlyQuarterNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getOnlyQuarterIsOn()) {
+                    JavaMetronome.setOnlyQuarterIsOn(false);
+                    onlyQuarterNoteButton.setImageResource(R.drawable.quarterrest1);
+                } else {
+                    JavaMetronome.setOnlyQuarterIsOn(true);
+                    onlyQuarterNoteButton.setImageResource(R.drawable.testing4);
+                }
+            }
+        });
+        first8thNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getFirst8thIsOn()) {
+                    JavaMetronome.setFirst8thIsOn(false);
+                    first8thNoteButton.setImageResource(R.drawable.quarterrest1);
+                } else {
+                    JavaMetronome.setFirst8thIsOn(true);
+                    first8thNoteButton.setImageResource(R.drawable.testing4);
+                }
+            }
+        });
+        second8thNoteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getSecond8thIsOn()) {
+                    JavaMetronome.setSecond8thIsOn(false);
+                    second8thNoteButton.setImageResource(R.drawable.quarterrest1);
+                } else {
+                    JavaMetronome.setSecond8thIsOn(true);
+                    second8thNoteButton.setImageResource(R.drawable.testing4);
+                }
+            }
+        });
+
 
         metroTask = new MetronomeAsyncTask();
 
@@ -140,6 +233,7 @@ public class MainActivity extends Activity {
         //if(buttonText.equalsIgnoreCase("start")) {
         if (!isMetOn) {
             isMetOn = true;
+            button.setImageResource(R.drawable.ic_baseline_pause_24);
             //button.setText(R.string.stop);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
                 metroTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, (Void[])null);
@@ -148,6 +242,7 @@ public class MainActivity extends Activity {
         } else {
             //button.setText(R.string.start);
             isMetOn = false;
+            button.setImageResource(R.drawable.ic_baseline_play_arrow_24);
             metroTask.stop();
             metroTask = new MetronomeAsyncTask();
             Runtime.getRuntime().gc();
@@ -155,6 +250,14 @@ public class MainActivity extends Activity {
     }
 
     public void toTempoView(View view) {
+        ImageButton startStopButton = (ImageButton) findViewById(R.id.startstop);
+        if (isMetOn) {
+            isMetOn = false;
+            startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+            metroTask.stop();
+            metroTask = new MetronomeAsyncTask();
+            Runtime.getRuntime().gc();
+        }
         Button tempoButton = (Button) findViewById(R.id.tempoButton);
         String currTempo = tempoButton.getText().toString();
         Intent intent = new Intent(MainActivity.this, setTempoActivity.class);
@@ -163,6 +266,14 @@ public class MainActivity extends Activity {
     }
 
     public void toSubdivisionsView(View view) {
+        ImageButton startStopButton = (ImageButton) findViewById(R.id.startstop);
+        if (isMetOn) {
+            isMetOn = false;
+            startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+            metroTask.stop();
+            metroTask = new MetronomeAsyncTask();
+            Runtime.getRuntime().gc();
+        }
         Button subdivButton = (Button) findViewById(R.id.subdivisionsButton);
         Button tempoButton = (Button) findViewById(R.id.tempoButton);
         String currTempo = tempoButton.getText().toString();
@@ -235,9 +346,13 @@ public class MainActivity extends Activity {
 
     }
 
+    public static boolean getQuarterSubStatus() { return quarterSubStatus; }
     public static void setQuarterSubStatus(Boolean qss2) { quarterSubStatus = qss2; }
+
     public static void setEighthSubStatus(Boolean ess2) { eighthSubStatus = ess2; }
+
     public static void setSixteenthSubStatus(Boolean sss2) { sixteenthSubStatus = sss2; }
+
     public static void setEighthTripSubStatus(Boolean etss2) { eighthTripSubStatus = etss2; }
 
 

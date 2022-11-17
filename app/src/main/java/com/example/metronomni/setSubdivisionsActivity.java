@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import android.graphics.Color;
+
 
 public class setSubdivisionsActivity extends Activity {
     private Handler mHandler;
@@ -15,8 +19,13 @@ public class setSubdivisionsActivity extends Activity {
         setContentView(R.layout.activity_subdivisions);
 
         MainActivity mainactivity = new MainActivity();
+        ConstraintLayout quarterArea = (ConstraintLayout) findViewById(R.id.quarterArea);
+        ConstraintLayout eighthArea = (ConstraintLayout) findViewById(R.id.eighthArea);
+        if (mainactivity.getQuarterSubStatus()) {
+            quarterArea.setBackgroundColor(Color.GREEN);
+        }
 
-        Button subsQuarterButton = (Button) findViewById(R.id.setQuarterNoteButton);
+        ImageButton subsQuarterButton = (ImageButton) findViewById(R.id.setQuarterNoteButton);
         subsQuarterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 JavaMetronome.setQuarterSubs(true);
@@ -31,7 +40,7 @@ public class setSubdivisionsActivity extends Activity {
             }
         });
 
-        Button subsEighthsButton = (Button) findViewById(R.id.setEighthNoteButton);
+        ImageButton subsEighthsButton = (ImageButton) findViewById(R.id.setEighthNoteButton);
         subsEighthsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 JavaMetronome.setQuarterSubs(false);
@@ -43,10 +52,13 @@ public class setSubdivisionsActivity extends Activity {
                 MainActivity.setEighthSubStatus(true);
                 MainActivity.setSixteenthSubStatus(false);
                 MainActivity.setEighthTripSubStatus(false);
+
+                quarterArea.setBackgroundResource(R.color.dark_gray);
+                eighthArea.setBackgroundColor(Color.GREEN);
             }
         });
 
-        Button subsSixteenthsButton = (Button) findViewById(R.id.setSixteenthNoteButton);
+        /*ImageButton subsSixteenthsButton = (ImageButton) findViewById(R.id.setSixteenthNoteButton);
         subsSixteenthsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 JavaMetronome.setQuarterSubs(false);
@@ -61,7 +73,7 @@ public class setSubdivisionsActivity extends Activity {
             }
         });
 
-        Button subsEighthNoteTripletsButton = (Button) findViewById(R.id.setEighthNoteTripletButton);
+        ImageButton subsEighthNoteTripletsButton = (ImageButton) findViewById(R.id.setEighthNoteTripletButton);
         subsEighthNoteTripletsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 JavaMetronome.setQuarterSubs(false);
@@ -74,7 +86,7 @@ public class setSubdivisionsActivity extends Activity {
                 MainActivity.setSixteenthSubStatus(false);
                 MainActivity.setEighthTripSubStatus(true);
             }
-        });
+        });*/
 
     }
 
