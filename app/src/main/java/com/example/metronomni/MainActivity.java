@@ -94,9 +94,17 @@ public class MainActivity extends Activity {
         Switch accent1Switch = (Switch) findViewById(R.id.pulseToggle);
 
         accent1Switch.setChecked(false);
+        JavaMetronome.setBeat1Accent(false);
         accent1Switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
                 if (isChecked) {
                     JavaMetronome.setBeat1Accent(true);
                 } else {

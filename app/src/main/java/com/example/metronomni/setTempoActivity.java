@@ -46,7 +46,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 0;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         oneButton.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 1;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         twoButton.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 2;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         threeButton.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +85,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 3;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         fourButton.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +98,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 4;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         fiveButton.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +111,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 5;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         sixButton.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +124,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 6;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         sevenButton.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +137,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 7;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         eightButton.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +150,7 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 8;
                     tempoText.setText(Integer.toString(tempo));
                 }
-                checkBpmBounds(tempo);
+                //checkBpmBounds(tempo);
             }
         });
         nineButton.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +163,13 @@ public class setTempoActivity extends Activity {
                     tempo = (tempo * 10) + 9;
                     tempoText.setText(Integer.toString(tempo));
                 }
+                //checkBpmBounds(tempo);
+            }
+        });
+        setButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 checkBpmBounds(tempo);
+                toMainView(v);
             }
         });
         clearButton.setOnClickListener(new View.OnClickListener() {
@@ -192,6 +198,11 @@ public class setTempoActivity extends Activity {
                 tempo = 120;
                 tempoText.setText(Integer.toString(tempo));
             }
+        }
+
+        if (tempo < 20) {
+            tempo = 20;
+            tempoText.setText(Integer.toString(tempo));
         }
     }
 
