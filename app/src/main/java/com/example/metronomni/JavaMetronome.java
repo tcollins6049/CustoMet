@@ -14,6 +14,7 @@ public class JavaMetronome {
 
     private double beatSound;
     private double sound;
+    private double accent1 = 2940;
     private final int tick = 1000; // samples of tick
 
     private boolean play = true;
@@ -22,11 +23,12 @@ public class JavaMetronome {
     // Creates values used to write to AudioTrack //
     private AudioGenerator audioGenerator = new AudioGenerator(8000);
     private Handler mHandler;
-    private double[] soundTickArray;
+    private double[] accentSoundArray;
     private double[] soundTockArray;
     private double[] noSoundArray;
     private double[] silenceSoundArray;
-    private Message msg;
+    private double[] accent1SoundArray;
+    //private Message msg;
     private double currentBeat = 1.0;
     ///////////////////////////////////////////////////
 
@@ -47,6 +49,9 @@ public class JavaMetronome {
     static boolean second8thIsOn = true;
     //////////////////////////////////////////////////////////////////////
 
+    boolean beat1Accent = true;
+    int currNumBeat = 0;
+
     public JavaMetronome() {//Handler handler) {
         audioGenerator.createPlayer();
         //this.mHandler = handler;
@@ -55,19 +60,22 @@ public class JavaMetronome {
     // Calculates how much silenece to write to the AudioTrack //
     public void calcSilence() {
         silence = (int) (((60/usableBpm)*8000) - tick);
-        soundTickArray = new double[this.tick];
+        accentSoundArray = new double[this.tick];
         soundTockArray = new double[this.tick];
         noSoundArray = new double[this.tick];
         silenceSoundArray = new double[this.silence];
-        msg = new Message();
-        msg.obj = ""+currentBeat;
+        accent1SoundArray = new double[this.tick];
+        //msg = new Message();
+        //msg.obj = ""+currentBeat;
         double[] tick = audioGenerator.getSineWave(this.tick, 8000, beatSound);
         double[] tock = audioGenerator.getSineWave(this.tick, 8000, sound);
         double[] none = audioGenerator.getSineWave(this.tick, 8000, 0);
+        double[] acc1 = audioGenerator.getSineWave(this.tick, 8000, accent1);
         for(int i=0;i<this.tick;i++) {
-            soundTickArray[i] = tick[i];
+            accentSoundArray[i] = tick[i];
             soundTockArray[i] = tock[i];
             noSoundArray[i] = none[i];
+            accent1SoundArray[i] = acc1[i];
         }
         for(int i=0;i<silence;i++)
             silenceSoundArray[i] = 0;
@@ -104,7 +112,7 @@ public class JavaMetronome {
             //msg = new Message();
             //msg.obj = ""+currentBeat;
             if (onlyQuarterIsOn) {
-                audioGenerator.writeSound(soundTickArray);
+                audioGenerator.writeSound(accentSoundArray);
             } else {
                 audioGenerator.writeSound(noSoundArray);
             }
@@ -123,34 +131,40 @@ public class JavaMetronome {
 
     // Plays metronome at eighth note subdivisions //
     public void EighthNotePlay() {
+        int numBeats = 4;
         calcSilence();
         do {
-            //msg = new Message();
-            //msg.obj = ""+currentBeat;
             if(currentBeat % 2 == 1) {
                 if (first8thIsOn) {
-                    audioGenerator.writeSound(soundTickArray);
-                } else {
-                    audioGenerator.writeSound(noSoundArray);
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(accentSoundArray);
+                        currNumBeat++;
+                    }
+                }  else {
+                    if (currNumBeat % numBeats == 0) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(noSoundArray);
+                        currNumBeat++;
+                    }
                 }
             } else {
                 if (second8thIsOn) {
-                    audioGenerator.writeSound(soundTickArray);
+                    audioGenerator.writeSound(accentSoundArray);
                 } else {
                     audioGenerator.writeSound(noSoundArray);
                 }
             }
-            //if(bpm <= 120)
-                //mHandler.sendMessage(msg);
-
             audioGenerator.writeSound(silenceSoundArray);
-
-            //if(bpm > 120)
-                //mHandler.sendMessage(msg);
             currentBeat++;
             if(currentBeat > usableBeat)
                 currentBeat = 1;
         } while(play);
+        currNumBeat = 0;
     }
 
     // Plays metronome at 16th note subdivisions //
@@ -161,25 +175,25 @@ public class JavaMetronome {
             //msg.obj = ""+currentBeat;
             if(currentBeat % 4 == 1) {
                 if (first16thIsOn) {
-                    audioGenerator.writeSound(soundTickArray);
+                    audioGenerator.writeSound(accentSoundArray);
                 } else {
                     audioGenerator.writeSound(noSoundArray);
                 }
             } else if (currentBeat % 4 == 2){
                 if (second16thIsOn) {
-                    audioGenerator.writeSound(soundTickArray);
+                    audioGenerator.writeSound(accentSoundArray);
                 } else {
                     audioGenerator.writeSound(noSoundArray);
                 }
             } else if (currentBeat % 4 == 3){
                 if (third16thIsOn) {
-                    audioGenerator.writeSound(soundTickArray);
+                    audioGenerator.writeSound(accentSoundArray);
                 } else {
                     audioGenerator.writeSound(noSoundArray);
                 }
             } else if (currentBeat % 4 == 0){
                 if (fourth16thIsOn) {
-                    audioGenerator.writeSound(soundTickArray);
+                    audioGenerator.writeSound(accentSoundArray);
                 } else {
                     audioGenerator.writeSound(noSoundArray);
                 }
@@ -204,7 +218,7 @@ public class JavaMetronome {
             //msg = new Message();
             //msg.obj = ""+currentBeat;
             if(currentBeat % 3 == 1) {
-                audioGenerator.writeSound(soundTickArray);
+                audioGenerator.writeSound(accentSoundArray);
             } else {
                 audioGenerator.writeSound(soundTockArray);
             }

@@ -87,8 +87,8 @@ public class MainActivity extends Activity {
         ImageButton fourth16thNoteButton = (ImageButton) findViewById(R.id.Fourth16thNote);
         ImageButton third16thNoteButton = (ImageButton) findViewById(R.id.Third16thNote);
         ImageButton onlyQuarterNoteButton = (ImageButton) findViewById(R.id.OnlyQuarterNote);
-        ImageButton first8thNoteButton = (ImageButton) findViewById(R.id.firstEighthNote);
-        ImageButton second8thNoteButton = (ImageButton) findViewById(R.id.secondEighthNote);
+        ImageButton first8thNoteButton = (ImageButton) findViewById(R.id.secondEighthNote);
+        ImageButton second8thNoteButton = (ImageButton) findViewById(R.id.firstEighthNote);
         first16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (isMetOn) {
