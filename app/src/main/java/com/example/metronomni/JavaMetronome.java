@@ -49,7 +49,7 @@ public class JavaMetronome {
     static boolean second8thIsOn = true;
     //////////////////////////////////////////////////////////////////////
 
-    boolean beat1Accent = true;
+    static boolean beat1Accent;
     int currNumBeat = 0;
 
     public JavaMetronome() {//Handler handler) {
@@ -314,6 +314,10 @@ public class JavaMetronome {
 
     public static boolean getSecond8thIsOn() { return second8thIsOn; }
     public static void setSecond8thIsOn(boolean second8thIsOn2) { second8thIsOn = second8thIsOn2; }
+
+
+    public static boolean getBeat1Accent() { return beat1Accent; }
+    public static void setBeat1Accent(boolean beat) { beat1Accent = beat; }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 

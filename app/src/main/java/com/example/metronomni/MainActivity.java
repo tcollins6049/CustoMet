@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.content.Intent;
 import android.widget.ImageButton;
+import android.widget.Switch;
+import android.widget.CompoundButton;
 
 public class MainActivity extends Activity {
 
@@ -89,6 +91,20 @@ public class MainActivity extends Activity {
         ImageButton onlyQuarterNoteButton = (ImageButton) findViewById(R.id.OnlyQuarterNote);
         ImageButton first8thNoteButton = (ImageButton) findViewById(R.id.secondEighthNote);
         ImageButton second8thNoteButton = (ImageButton) findViewById(R.id.firstEighthNote);
+        Switch accent1Switch = (Switch) findViewById(R.id.pulseToggle);
+
+        accent1Switch.setChecked(false);
+        accent1Switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    JavaMetronome.setBeat1Accent(true);
+                } else {
+                    JavaMetronome.setBeat1Accent(false);
+                }
+            }
+        });
+
         first16thNoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (isMetOn) {
