@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 
     // have in mind that: http://stackoverflow.com/questions/11407943/this-handler-class-should-be-static-or-leaks-might-occur-incominghandler
     // in this case we should be fine as no delayed messages are queued
-    private Handler getHandler() {
+    /*private Handler getHandler() {
         return new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
                 currentBeat.setText(message);
             }
         };
-    }
+    }*/
 
     /** Called when the activity is first created. */
     @Override
@@ -300,8 +300,8 @@ public class MainActivity extends Activity {
         JavaMetronome metronome;
 
         MetronomeAsyncTask() {
-            mHandler = getHandler();
-            metronome = new JavaMetronome(mHandler);
+            //mHandler = getHandler();
+            metronome = new JavaMetronome(); //mHandler);
         }
 
         protected String doInBackground(Void... params) {

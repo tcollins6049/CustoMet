@@ -47,9 +47,9 @@ public class JavaMetronome {
     static boolean second8thIsOn = true;
     //////////////////////////////////////////////////////////////////////
 
-    public JavaMetronome(Handler handler) {
+    public JavaMetronome() {//Handler handler) {
         audioGenerator.createPlayer();
-        this.mHandler = handler;
+        //this.mHandler = handler;
     }
 
     // Calculates how much silenece to write to the AudioTrack //
@@ -101,20 +101,20 @@ public class JavaMetronome {
     public void QuarterNotePlay() {
         calcSilence();
         do {
-            msg = new Message();
-            msg.obj = ""+currentBeat;
+            //msg = new Message();
+            //msg.obj = ""+currentBeat;
             if (onlyQuarterIsOn) {
                 audioGenerator.writeSound(soundTickArray);
             } else {
                 audioGenerator.writeSound(noSoundArray);
             }
-            if(bpm <= 120)
-                mHandler.sendMessage(msg);
+            //if(bpm <= 120)
+                //mHandler.sendMessage(msg);
 
             audioGenerator.writeSound(silenceSoundArray);
 
-            if(bpm > 120)
-                mHandler.sendMessage(msg);
+            //if(bpm > 120)
+                //mHandler.sendMessage(msg);
             currentBeat++;
             if(currentBeat > usableBeat)
                 currentBeat = 1;
@@ -125,8 +125,8 @@ public class JavaMetronome {
     public void EighthNotePlay() {
         calcSilence();
         do {
-            msg = new Message();
-            msg.obj = ""+currentBeat;
+            //msg = new Message();
+            //msg.obj = ""+currentBeat;
             if(currentBeat % 2 == 1) {
                 if (first8thIsOn) {
                     audioGenerator.writeSound(soundTickArray);
@@ -140,13 +140,13 @@ public class JavaMetronome {
                     audioGenerator.writeSound(noSoundArray);
                 }
             }
-            if(bpm <= 120)
-                mHandler.sendMessage(msg);
+            //if(bpm <= 120)
+                //mHandler.sendMessage(msg);
 
             audioGenerator.writeSound(silenceSoundArray);
 
-            if(bpm > 120)
-                mHandler.sendMessage(msg);
+            //if(bpm > 120)
+                //mHandler.sendMessage(msg);
             currentBeat++;
             if(currentBeat > usableBeat)
                 currentBeat = 1;
@@ -157,8 +157,8 @@ public class JavaMetronome {
     public void sixteenthNotePlay() {
         calcSilence();
         do {
-            msg = new Message();
-            msg.obj = ""+currentBeat;
+            //msg = new Message();
+            //msg.obj = ""+currentBeat;
             if(currentBeat % 4 == 1) {
                 if (first16thIsOn) {
                     audioGenerator.writeSound(soundTickArray);
@@ -185,13 +185,13 @@ public class JavaMetronome {
                 }
             }
 
-            if(bpm <= 120)
-                mHandler.sendMessage(msg);
+            //if(bpm <= 120)
+                //mHandler.sendMessage(msg);
 
             audioGenerator.writeSound(silenceSoundArray);
 
-            if(bpm > 120)
-                mHandler.sendMessage(msg);
+            //if(bpm > 120)
+                //mHandler.sendMessage(msg);
             currentBeat++;
             if(currentBeat > usableBeat)
                 currentBeat = 1;
@@ -201,20 +201,20 @@ public class JavaMetronome {
     public void EighthNoteTripletPlay() {
         calcSilence();
         do {
-            msg = new Message();
-            msg.obj = ""+currentBeat;
+            //msg = new Message();
+            //msg.obj = ""+currentBeat;
             if(currentBeat % 3 == 1) {
                 audioGenerator.writeSound(soundTickArray);
             } else {
                 audioGenerator.writeSound(soundTockArray);
             }
-            if(bpm <= 120)
-                mHandler.sendMessage(msg);
+            //if(bpm <= 120)
+                //mHandler.sendMessage(msg);
 
             audioGenerator.writeSound(silenceSoundArray);
 
-            if(bpm > 120)
-                mHandler.sendMessage(msg);
+            //if(bpm > 120)
+                //mHandler.sendMessage(msg);
             currentBeat++;
             if(currentBeat > usableBeat)
                 currentBeat = 1;

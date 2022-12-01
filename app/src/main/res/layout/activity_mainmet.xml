@@ -223,6 +223,15 @@
 
         </Button>
 
+        <Switch
+            android:id="@+id/pulseToggle"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/currentBeat"
+            app:layout_constraintStart_toEndOf="@+id/tempoButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/currentBeat"
             android:layout_width="100dp"
