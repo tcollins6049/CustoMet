@@ -108,21 +108,26 @@ public class JavaMetronome {
     // Plays metronome at quarter note subdivisions //
     public void QuarterNotePlay() {
         calcSilence();
+        int numBeats = 4;
         do {
-            //msg = new Message();
-            //msg.obj = ""+currentBeat;
             if (onlyQuarterIsOn) {
-                audioGenerator.writeSound(accentSoundArray);
+                if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                    audioGenerator.writeSound(accent1SoundArray);
+                    currNumBeat = 1;
+                } else {
+                    audioGenerator.writeSound(accentSoundArray);
+                    currNumBeat++;
+                }
             } else {
-                audioGenerator.writeSound(noSoundArray);
+                if (currNumBeat % numBeats == 0) {
+                    audioGenerator.writeSound(accent1SoundArray);
+                    currNumBeat = 1;
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                    currNumBeat++;
+                }
             }
-            //if(bpm <= 120)
-                //mHandler.sendMessage(msg);
-
             audioGenerator.writeSound(silenceSoundArray);
-
-            //if(bpm > 120)
-                //mHandler.sendMessage(msg);
             currentBeat++;
             if(currentBeat > usableBeat)
                 currentBeat = 1;
@@ -170,12 +175,19 @@ public class JavaMetronome {
     // Plays metronome at 16th note subdivisions //
     public void sixteenthNotePlay() {
         calcSilence();
+        int numBeats = 4;
         do {
             //msg = new Message();
             //msg.obj = ""+currentBeat;
             if(currentBeat % 4 == 1) {
                 if (first16thIsOn) {
-                    audioGenerator.writeSound(accentSoundArray);
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(accentSoundArray);
+                        currNumBeat++;
+                    }
                 } else {
                     audioGenerator.writeSound(noSoundArray);
                 }
