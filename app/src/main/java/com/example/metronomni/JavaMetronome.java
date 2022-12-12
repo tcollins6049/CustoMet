@@ -44,7 +44,7 @@ public class JavaMetronome {
     static boolean second16thIsOn = true;
     static boolean third16thIsOn = true;
     static boolean fourth16thIsOn = true;
-    static boolean onlyQuarterIsOn = true;
+    static int onlyQuarterIsOn = 1;
     static boolean first8thIsOn = true;
     static boolean second8thIsOn = true;
     //////////////////////////////////////////////////////////////////////
@@ -110,7 +110,15 @@ public class JavaMetronome {
         calcSilence();
         int numBeats = 4;
         do {
-            if (onlyQuarterIsOn) {
+            if (onlyQuarterIsOn == 1) {
+                if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                    audioGenerator.writeSound(accent1SoundArray);
+                    currNumBeat = 1;
+                } else {
+                    audioGenerator.writeSound(soundTockArray);
+                    currNumBeat++;
+                }
+            } else if (onlyQuarterIsOn == 2) {
                 if (beat1Accent && (currNumBeat % numBeats == 0)) {
                     audioGenerator.writeSound(accent1SoundArray);
                     currNumBeat = 1;
@@ -118,8 +126,9 @@ public class JavaMetronome {
                     audioGenerator.writeSound(accentSoundArray);
                     currNumBeat++;
                 }
+
             } else {
-                if (currNumBeat % numBeats == 0) {
+                if (currNumBeat % numBeats == 0 && beat1Accent) {
                     audioGenerator.writeSound(accent1SoundArray);
                     currNumBeat = 1;
                 } else {
@@ -149,7 +158,7 @@ public class JavaMetronome {
                         currNumBeat++;
                     }
                 }  else {
-                    if (currNumBeat % numBeats == 0) {
+                    if (beat1Accent && currNumBeat % numBeats == 0) {
                         audioGenerator.writeSound(accent1SoundArray);
                         currNumBeat = 1;
                     } else {
@@ -177,8 +186,6 @@ public class JavaMetronome {
         calcSilence();
         int numBeats = 4;
         do {
-            //msg = new Message();
-            //msg.obj = ""+currentBeat;
             if(currentBeat % 4 == 1) {
                 if (first16thIsOn) {
                     if (beat1Accent && (currNumBeat % numBeats == 0)) {
@@ -189,7 +196,13 @@ public class JavaMetronome {
                         currNumBeat++;
                     }
                 } else {
-                    audioGenerator.writeSound(noSoundArray);
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(noSoundArray);
+                        currNumBeat++;
+                    }
                 }
             } else if (currentBeat % 4 == 2){
                 if (second16thIsOn) {
@@ -318,8 +331,8 @@ public class JavaMetronome {
     public static boolean getFourth16thIsOn() { return fourth16thIsOn; }
     public static void setFourth16thIsOn(boolean fourthIsOn2) { fourth16thIsOn = fourthIsOn2; }
 
-    public static boolean getOnlyQuarterIsOn() { return onlyQuarterIsOn; }
-    public static void setOnlyQuarterIsOn(boolean onlyQuarterIsOn2) { onlyQuarterIsOn = onlyQuarterIsOn2; }
+    public static int getOnlyQuarterIsOn() { return onlyQuarterIsOn; }
+    public static void setOnlyQuarterIsOn(int onlyQuarterIsOn2) { onlyQuarterIsOn = onlyQuarterIsOn2; }
 
     public static boolean getFirst8thIsOn() { return first8thIsOn; }
     public static void setFirst8thIsOn(boolean first8thIsOn2) { first8thIsOn = first8thIsOn2; }

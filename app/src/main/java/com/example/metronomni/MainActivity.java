@@ -194,11 +194,13 @@ public class MainActivity extends Activity {
                     metroTask = new MetronomeAsyncTask();
                     Runtime.getRuntime().gc();
                 }
-                if (JavaMetronome.getOnlyQuarterIsOn()) {
-                    JavaMetronome.setOnlyQuarterIsOn(false);
+                if (JavaMetronome.getOnlyQuarterIsOn() == 1) {
+                    JavaMetronome.setOnlyQuarterIsOn(2);
+                } else if (JavaMetronome.getOnlyQuarterIsOn() == 2){
+                    JavaMetronome.setOnlyQuarterIsOn(0);
                     onlyQuarterNoteButton.setImageResource(R.drawable.quarterrest1);
                 } else {
-                    JavaMetronome.setOnlyQuarterIsOn(true);
+                    JavaMetronome.setOnlyQuarterIsOn(1);
                     onlyQuarterNoteButton.setImageResource(R.drawable.testing4);
                 }
             }
