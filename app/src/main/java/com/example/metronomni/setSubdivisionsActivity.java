@@ -32,6 +32,7 @@ public class setSubdivisionsActivity extends Activity {
         TextView eighthText = (TextView) findViewById(R.id.eighthNoteText);
         TextView sixteenthText = (TextView) findViewById(R.id.sixteenthNoteText);
 
+
         MainActivity mainactivity = new MainActivity();
         ConstraintLayout quarterArea = (ConstraintLayout) findViewById(R.id.quarterArea);
         ConstraintLayout eighthArea = (ConstraintLayout) findViewById(R.id.eighthArea);
@@ -80,6 +81,8 @@ public class setSubdivisionsActivity extends Activity {
                     MainActivity.setSixteenthSubStatus(false);
                     MainActivity.setEighthTripSubStatus(false);
 
+                    MainActivity.setSubText("Quarter Notes");
+
                     if (quarterClickable) quarterArea.setBackgroundColor(Color.GREEN);
                     if (eighthClickable) eighthArea.setBackgroundResource(R.color.dark_gray);
                     if (sixteenthClickable) sixteenthArea.setBackgroundResource(R.color.dark_gray);
@@ -99,6 +102,8 @@ public class setSubdivisionsActivity extends Activity {
                     MainActivity.setSixteenthSubStatus(false);
                     MainActivity.setEighthTripSubStatus(false);
 
+                    MainActivity.setSubText("8th Notes");
+
                     if (quarterClickable) quarterArea.setBackgroundResource(R.color.dark_gray);
                     if (eighthClickable) eighthArea.setBackgroundColor(Color.GREEN);
                     if (sixteenthClickable) sixteenthArea.setBackgroundResource(R.color.dark_gray);
@@ -117,6 +122,8 @@ public class setSubdivisionsActivity extends Activity {
                     MainActivity.setEighthSubStatus(false);
                     MainActivity.setSixteenthSubStatus(true);
                     MainActivity.setEighthTripSubStatus(false);
+
+                    MainActivity.setSubText("16th Notes");
 
                     if (quarterClickable) quarterArea.setBackgroundResource(R.color.dark_gray);
                     if (eighthClickable) eighthArea.setBackgroundResource(R.color.dark_gray);

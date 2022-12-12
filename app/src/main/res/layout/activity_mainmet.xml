@@ -106,10 +106,9 @@
         android:background="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/playArea"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerArea">
+        app:layout_constraintStart_toStartOf="parent">
 
-          <ImageButton
+        <ImageButton
             android:id="@+id/First16thNote"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -152,6 +151,7 @@
             app:layout_constraintStart_toEndOf="@+id/Third16thNote">
 
         </ImageButton>
+
         <ImageButton
             android:id="@+id/OnlyQuarterNote"
             android:layout_width="100dp"
@@ -165,6 +165,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </ImageButton>
+
         <ImageButton
             android:id="@+id/firstEighthNote"
             android:layout_width="100dp"
@@ -198,16 +199,17 @@
         </ImageButton>
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerArea"
         android:layout_width="match_parent"
-        android:layout_height="183dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="17dp"
         android:background="@color/dark_gray"
-        app:layout_constraintBottom_toTopOf="@+id/subdivisionNotes"
+        app:layout_constraintBottom_toTopOf="@+id/subdivisionName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -247,6 +249,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/subdivisionName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/gray"
+        android:textSize="30dp"
+        android:text="Quarter Notes"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/subdivisionNotes"
+        app:layout_constraintTop_toBottomOf="@+id/headerArea">
+
+    </TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
