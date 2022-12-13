@@ -93,6 +93,11 @@ public class MainActivity extends Activity {
         ImageButton onlyQuarterNoteButton = (ImageButton) findViewById(R.id.OnlyQuarterNote);
         ImageButton first8thNoteButton = (ImageButton) findViewById(R.id.secondEighthNote);
         ImageButton second8thNoteButton = (ImageButton) findViewById(R.id.firstEighthNote);
+        ImageButton first8thTripNote = (ImageButton) findViewById(R.id.first8thTripNote);
+        ImageButton second8thTripNote = (ImageButton) findViewById(R.id.second8thTripNote);
+        ImageButton third8thTripNote = (ImageButton) findViewById(R.id.third8thTripNote);
+
+
         Switch accent1Switch = (Switch) findViewById(R.id.pulseToggle);
 
         TextView subTextView = (TextView) findViewById(R.id.subdivisionName);
@@ -262,6 +267,67 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        first8thTripNote.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getFirst8thTripIsOn() == 1) {
+                    JavaMetronome.setFirst8thTripIsOn(2);
+                } else if (JavaMetronome.getFirst8thTripIsOn() == 2){
+                    JavaMetronome.setFirst8thTripIsOn(0);
+                    first8thTripNote.setImageResource(R.drawable.quarterrest1);
+                } else {
+                    JavaMetronome.setFirst8thTripIsOn(1);
+                    first8thTripNote.setImageResource(R.drawable.testing4);
+                }
+            }
+        });
+        second8thTripNote.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getSecond8thTripIsOn() == 1) {
+                    JavaMetronome.setSecond8thTripIsOn(2);
+                } else if (JavaMetronome.getSecond8thTripIsOn() == 2){
+                    JavaMetronome.setSecond8thTripIsOn(0);
+                    second8thTripNote.setImageResource(R.drawable.quarterrest1);
+                } else {
+                    JavaMetronome.setSecond8thTripIsOn(1);
+                    second8thTripNote.setImageResource(R.drawable.testing4);
+                }
+            }
+        });
+        third8thTripNote.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isMetOn) {
+                    isMetOn = false;
+                    startStopButton.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                    metroTask.stop();
+                    metroTask = new MetronomeAsyncTask();
+                    Runtime.getRuntime().gc();
+                }
+                if (JavaMetronome.getThird8thTripIsOn() == 1) {
+                    JavaMetronome.setThird8thTripIsOn(2);
+                } else if (JavaMetronome.getThird8thTripIsOn() == 2){
+                    JavaMetronome.setThird8thTripIsOn(0);
+                    third8thTripNote.setImageResource(R.drawable.quarterrest1);
+                } else {
+                    JavaMetronome.setThird8thTripIsOn(1);
+                    third8thTripNote.setImageResource(R.drawable.testing4);
+                }
+            }
+        });
+
 
 
         metroTask = new MetronomeAsyncTask();
@@ -379,6 +445,10 @@ public class MainActivity extends Activity {
         ImageButton onlyQuarterNoteButton = (ImageButton) findViewById(R.id.OnlyQuarterNote);
         ImageButton first8thNoteButton = (ImageButton) findViewById(R.id.firstEighthNote);
         ImageButton second8thNoteButton = (ImageButton) findViewById(R.id.secondEighthNote);
+        ImageButton first8thTripNote = (ImageButton) findViewById(R.id.first8thTripNote);
+        ImageButton second8thTripNote = (ImageButton) findViewById(R.id.second8thTripNote);
+        ImageButton third8thTripNote = (ImageButton) findViewById(R.id.third8thTripNote);
+
         if (quarterSubStatus) {
             first16thNoteButton.setVisibility(View.GONE);
             second16thNoteButton.setVisibility(View.GONE);
@@ -387,6 +457,9 @@ public class MainActivity extends Activity {
             onlyQuarterNoteButton.setVisibility(View.VISIBLE);
             first8thNoteButton.setVisibility(View.GONE);
             second8thNoteButton.setVisibility(View.GONE);
+            first8thTripNote.setVisibility(View.GONE);
+            second8thTripNote.setVisibility(View.GONE);
+            third8thTripNote.setVisibility(View.GONE);
         } else if (eighthSubStatus) {
             first16thNoteButton.setVisibility(View.GONE);
             second16thNoteButton.setVisibility(View.GONE);
@@ -395,6 +468,9 @@ public class MainActivity extends Activity {
             onlyQuarterNoteButton.setVisibility(View.GONE);
             first8thNoteButton.setVisibility(View.VISIBLE);
             second8thNoteButton.setVisibility(View.VISIBLE);
+            first8thTripNote.setVisibility(View.GONE);
+            second8thTripNote.setVisibility(View.GONE);
+            third8thTripNote.setVisibility(View.GONE);
         } else if (sixteenthSubStatus) {
             first16thNoteButton.setVisibility(View.VISIBLE);
             second16thNoteButton.setVisibility(View.VISIBLE);
@@ -403,6 +479,20 @@ public class MainActivity extends Activity {
             onlyQuarterNoteButton.setVisibility(View.GONE);
             first8thNoteButton.setVisibility(View.GONE);
             second8thNoteButton.setVisibility(View.GONE);
+            first8thTripNote.setVisibility(View.GONE);
+            second8thTripNote.setVisibility(View.GONE);
+            third8thTripNote.setVisibility(View.GONE);
+        } else if (eighthTripSubStatus) {
+            first16thNoteButton.setVisibility(View.GONE);
+            second16thNoteButton.setVisibility(View.GONE);
+            third16thNoteButton.setVisibility(View.GONE);
+            fourth16thNoteButton.setVisibility(View.GONE);
+            onlyQuarterNoteButton.setVisibility(View.GONE);
+            first8thNoteButton.setVisibility(View.GONE);
+            second8thNoteButton.setVisibility(View.GONE);
+            first8thTripNote.setVisibility(View.VISIBLE);
+            second8thTripNote.setVisibility(View.VISIBLE);
+            third8thTripNote.setVisibility(View.VISIBLE);
         }
 
     }
@@ -418,7 +508,7 @@ public class MainActivity extends Activity {
     public static boolean getSixteenthSubStatus() { return sixteenthSubStatus; }
     public static void setSixteenthSubStatus(Boolean sss2) { sixteenthSubStatus = sss2; }
 
-    public static boolean getEighthTripSubStatus() { return eighthTripSubStatus; }
+    public static Boolean getEighthTripSubStatus() { return eighthTripSubStatus; }
     public static void setEighthTripSubStatus(Boolean etss2) { eighthTripSubStatus = etss2; }
 
 

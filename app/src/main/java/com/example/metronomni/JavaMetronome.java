@@ -47,6 +47,10 @@ public class JavaMetronome {
     static int onlyQuarterIsOn = 1;
     static int first8thIsOn = 1;
     static int second8thIsOn = 1;
+
+    static int first8thTripIsOn = 1;
+    static int second8thTripIsOn = 1;
+    static int third8thTripIsOn = 1;
     //////////////////////////////////////////////////////////////////////
 
     static boolean beat1Accent;
@@ -258,21 +262,53 @@ public class JavaMetronome {
 
     public void EighthNoteTripletPlay() {
         calcSilence();
+        int numBeats = 4;
         do {
-            //msg = new Message();
-            //msg.obj = ""+currentBeat;
             if(currentBeat % 3 == 1) {
-                audioGenerator.writeSound(accentSoundArray);
-            } else {
-                audioGenerator.writeSound(soundTockArray);
+                if (first8thTripIsOn == 1) {
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(soundTockArray);
+                        currNumBeat++;
+                    }
+                } else if (first8thTripIsOn == 2){
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(accentSoundArray);
+                        currNumBeat++;
+                    }
+                } else {
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(noSoundArray);
+                        currNumBeat++;
+                    }
+                }
+            } else if (currentBeat % 3 == 2){
+                if (second8thTripIsOn == 1) {
+                    audioGenerator.writeSound(soundTockArray);
+                } else if (second8thTripIsOn == 2){
+                    audioGenerator.writeSound(accentSoundArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 3 == 0){
+                if (third8thTripIsOn == 1) {
+                    audioGenerator.writeSound(soundTockArray);
+                } else if (third8thTripIsOn == 2){
+                    audioGenerator.writeSound(accentSoundArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
             }
-            //if(bpm <= 120)
-                //mHandler.sendMessage(msg);
 
             audioGenerator.writeSound(silenceSoundArray);
-
-            //if(bpm > 120)
-                //mHandler.sendMessage(msg);
             currentBeat++;
             if(currentBeat > usableBeat)
                 currentBeat = 1;
@@ -358,6 +394,16 @@ public class JavaMetronome {
 
     public static int getSecond8thIsOn() { return second8thIsOn; }
     public static void setSecond8thIsOn(int second8thIsOn2) { second8thIsOn = second8thIsOn2; }
+
+
+    public static int getFirst8thTripIsOn() { return first8thTripIsOn; }
+    public static void setFirst8thTripIsOn(int first8thTripIsOn2) { first8thTripIsOn = first8thTripIsOn2; }
+
+    public static int getSecond8thTripIsOn() { return second8thTripIsOn; }
+    public static void setSecond8thTripIsOn(int second8thTripIsOn2) { second8thTripIsOn = second8thTripIsOn2; }
+
+    public static int getThird8thTripIsOn() { return third8thTripIsOn; }
+    public static void setThird8thTripIsOn(int third8thTripIsOn2) { third8thTripIsOn = third8thTripIsOn2; }
 
 
     public static boolean getBeat1Accent() { return beat1Accent; }
