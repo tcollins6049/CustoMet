@@ -37,6 +37,7 @@ public class JavaMetronome {
     static boolean eighthSubs = false;
     static boolean sixteenthSubs = false;
     static boolean eighthNoteTripletSubs = false;
+    static boolean sixtupletSubs = false;
     ///////////////////////////////////////////////////
 
     // Sets boolean values for if notes are accented, rests, or regular //
@@ -47,10 +48,16 @@ public class JavaMetronome {
     static int onlyQuarterIsOn = 1;
     static int first8thIsOn = 1;
     static int second8thIsOn = 1;
-
     static int first8thTripIsOn = 1;
     static int second8thTripIsOn = 1;
     static int third8thTripIsOn = 1;
+
+    static int first6 = 1;
+    static int second6 = 1;
+    static int third6 = 1;
+    static int fourth6 = 1;
+    static int fifth6 = 1;
+    static int sixth6 = 1;
     //////////////////////////////////////////////////////////////////////
 
     static boolean beat1Accent;
@@ -106,6 +113,10 @@ public class JavaMetronome {
             usableBeat = beat * 3;
             usableBpm = bpm * 3;
             EighthNoteTripletPlay();
+        } else if (sixtupletSubs) {
+            usableBeat = beat * 6;
+            usableBpm = bpm * 6;
+            sixtupletsPlay();
         }
     }
 
@@ -113,6 +124,7 @@ public class JavaMetronome {
     public void QuarterNotePlay() {
         calcSilence();
         int numBeats = 4;
+        audioGenerator.writeSound(silenceSoundArray);
         do {
             if (onlyQuarterIsOn == 1) {
                 if (beat1Accent && (currNumBeat % numBeats == 0)) {
@@ -315,6 +327,85 @@ public class JavaMetronome {
         } while(play);
     }
 
+    public void sixtupletsPlay() {
+        calcSilence();
+        int numBeats = 4;
+        do {
+            if(currentBeat % 6 == 1) {
+                if (first6 == 1) {
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(soundTockArray);
+                        currNumBeat++;
+                    }
+                } else if (first6 == 2){
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(accentSoundArray);
+                        currNumBeat++;
+                    }
+                } else {
+                    if (beat1Accent && (currNumBeat % numBeats == 0)) {
+                        audioGenerator.writeSound(accent1SoundArray);
+                        currNumBeat = 1;
+                    } else {
+                        audioGenerator.writeSound(noSoundArray);
+                        currNumBeat++;
+                    }
+                }
+            } else if (currentBeat % 6 == 2){
+                if (second6 == 1) {
+                    audioGenerator.writeSound(soundTockArray);
+                } else if (second6 == 2){
+                    audioGenerator.writeSound(accentSoundArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 6 == 3){
+                if (third6 == 1) {
+                    audioGenerator.writeSound(soundTockArray);
+                } else if (third6 == 2){
+                    audioGenerator.writeSound(accentSoundArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 6 == 4){
+                if (fourth6 == 1) {
+                    audioGenerator.writeSound(soundTockArray);
+                } else if (fourth6 == 2){
+                    audioGenerator.writeSound(accentSoundArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 6 == 5){
+                if (fifth6 == 1) {
+                    audioGenerator.writeSound(soundTockArray);
+                } else if (fifth6 == 2){
+                    audioGenerator.writeSound(accentSoundArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            } else if (currentBeat % 6 == 0){
+                if (sixth6 == 1) {
+                    audioGenerator.writeSound(soundTockArray);
+                } else if (sixth6 == 2){
+                    audioGenerator.writeSound(accentSoundArray);
+                } else {
+                    audioGenerator.writeSound(noSoundArray);
+                }
+            }
+
+            audioGenerator.writeSound(silenceSoundArray);
+            currentBeat++;
+            if(currentBeat > usableBeat)
+                currentBeat = 1;
+        } while(play);
+    }
+
     // Stops the metronome from playing //
     public void stop() {
         play = false;
@@ -372,6 +463,9 @@ public class JavaMetronome {
 
     public static void set8thTripSubs (boolean eighthNoteTrip2) { eighthNoteTripletSubs = eighthNoteTrip2; }
 
+    public boolean getSixtupletSubs() { return sixtupletSubs; }
+    public static void setSixtupletSubs(boolean subs) { sixtupletSubs = subs; }
+
     // Getter and setter methods for boolean values which determine if notes are active or not //
 
     public static int getFirst16thIsOn() { return first16thIsOn; }
@@ -404,6 +498,24 @@ public class JavaMetronome {
 
     public static int getThird8thTripIsOn() { return third8thTripIsOn; }
     public static void setThird8thTripIsOn(int third8thTripIsOn2) { third8thTripIsOn = third8thTripIsOn2; }
+
+    public static int getFirst6() { return first6; }
+    public static void setFirst6(int first62) { first6 = first62; }
+
+    public static int getSecond6() { return second6; }
+    public static void setSecond6(int second62) { second6 = second62; }
+
+    public static int getThird6() { return third6; }
+    public static void setThird6(int third62) { third6 = third62; }
+
+    public static int getFourth6() { return fourth6; }
+    public static void setFourth6(int fourth62) { fourth6 = fourth62; }
+
+    public static int getFifth6() { return fifth6; }
+    public static void setFifth6(int fifth62) { first6 = fifth62; }
+
+    public static int getSixth6() { return sixth6; }
+    public static void setSixth6(int sixth62) { sixth6 = sixth62; }
 
 
     public static boolean getBeat1Accent() { return beat1Accent; }

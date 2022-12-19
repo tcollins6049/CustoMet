@@ -108,7 +108,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-         <ImageButton
+          <ImageButton
             android:id="@+id/First16thNote"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -242,6 +242,99 @@
 
         </ImageButton>
 
+        <ImageButton
+            android:id="@+id/first6Note"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:alpha="1"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/second6Note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/second6Note"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/third6Note"
+            app:layout_constraintStart_toEndOf="@+id/first6Note"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/third6Note"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fourth6Note"
+            app:layout_constraintStart_toEndOf="@+id/second6Note"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/fourth6Note"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fifth6Note"
+            app:layout_constraintStart_toEndOf="@+id/third6Note"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/fifth6Note"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sixth6Note"
+            app:layout_constraintStart_toEndOf="@+id/fourth6Note"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/sixth6Note"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/gray"
+            android:gravity="center"
+            android:src="@drawable/testing4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fifth6Note"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </ImageButton>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -262,7 +355,7 @@
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:onClick="toTempoView"
-            android:text="100"
+            android:text="75"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -274,11 +367,11 @@
             android:layout_width="100dp"
             android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/currentBeat"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tempoButton"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <!-- <TextView
             android:id="@+id/currentBeat"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -290,7 +383,7 @@
             android:textColor="@color/yellow"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" /> -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
